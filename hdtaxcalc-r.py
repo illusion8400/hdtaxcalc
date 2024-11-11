@@ -2,11 +2,10 @@
 """ HD TAX CALCULATOR"""
 import tkinter as tk
 import sys
-import time
 
 class Version():
     def __init__(self):
-        self.version = "2.0-r"
+        self.version = "2.0.1"
 version = Version()
 
 def main(entry1, entry2, entry3):
@@ -45,28 +44,29 @@ class App:
         # Minimal tkinter app
         self.root = root
         self.root.title(f"HD Tax Calculator - v{version.version}")
-        self.root.minsize(300, 600)
+        self.root.minsize(400, 600)
+        self.root.maxsize(400,600)
         # Entry box; input
         self.title_label = tk.Label(self.root, text="Enter each amount with a space in between.")
         self.title_label.pack(side="top")
         # Amounts
         self.entry1_label = tk.Label(self.root, text="Amounts: ")
-        self.entry1_label.place(x=155, y=25)
+        self.entry1_label.place(x=20, y=30)
         self.entry1 = tk.Entry(self.root)
-        self.entry1.pack(pady=5)
+        self.entry1.pack(pady=5, side="top")
         # Taxes
         self.entry2_label = tk.Label(self.root, text="Tax Percent: ")
-        self.entry2_label.place(x=155, y=55)
+        self.entry2_label.place(x=20, y=65)
         self.entry2 = tk.Entry(self.root)
-        self.entry2.pack(pady=5)
+        self.entry2.pack(pady=5, side="top")
         # Total
         self.entry3_label = tk.Label(self.root, text="Total Invoice: ")
-        self.entry3_label.place(x=155, y=85)
+        self.entry3_label.place(x=20, y=100)
         self.entry3 = tk.Entry(self.root)
-        self.entry3.pack(pady=5)
+        self.entry3.pack(pady=5, side="top")
         # We add a button to test our setup
         self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self.entry1.get(), self.entry2.get(), self.entry3.get()))
-        self.go_button.pack()
+        self.go_button.pack(side="top")
         # Add windows where we are going to write the std output. 
         self.console_text = tk.Text(self.root, state='disabled', height=10)
         self.console_text.pack(expand=True, fill='both')
@@ -80,11 +80,6 @@ class App:
         # We specify that sys.stdout point to TextRedirector
         sys.stdout = TextRedirector(self.console_text, "stdout")
         sys.stderr = TextRedirector(self.console_text, "stderr")
-
-    def test_text_redirection(self):
-        for x in range(10):
-            print(x+1)
-            time.sleep(1)
     
 class TextRedirector(object):
     def __init__(self, widget, tag):
