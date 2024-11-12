@@ -38,7 +38,10 @@ def main(entry1, entry2, entry3, checkbox1):
         # END continue
         print (f"\nTotal input: ${total}")
         print(f"Total added: ${round(sum(amounts_with_tax), 2):.2f}")
-        print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%")
+        if checkbox1:
+            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${entry2}")
+        else:
+            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%")
         difference_calc = float(total) - float(round(sum(amounts_with_tax), 2))
         print(f"Difference(input-added=): ${round(difference_calc, 2):.2f}\n")        
     except KeyboardInterrupt:
