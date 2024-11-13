@@ -2,8 +2,9 @@
 
 **2.1.1**
 
-    - Prints total tax along with percentage when using tax total checkbox
-
+    - Prints total tax along with percentage
+    - Added about box
+    
 **2.1**
 
     - Added checkbox to calculate tax percentage based on a dollar amount
