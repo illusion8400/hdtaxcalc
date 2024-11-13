@@ -28,12 +28,14 @@ def main(entry1, entry2, entry3, checkbox1):
             tax_percent = entry2
         tax_percent = float(tax_percent) / 100
         amounts_with_tax = []
+        tax_list = []
         print("***")
         for x in amounts:
             count += 1
             amount_of_tax_for_item = float(x) * float(tax_percent)
             amt_with_tax = float(x) + float(amount_of_tax_for_item)
             amounts_with_tax.append(float(amt_with_tax))
+            tax_list.append(amount_of_tax_for_item)
             print(f"{count}: ${float(x):.2f} + ${round(amount_of_tax_for_item, 2):.2f} = ${round(amt_with_tax, 2):.2f}")
         # END continue
         print (f"\nTotal input: ${total}")
@@ -41,7 +43,7 @@ def main(entry1, entry2, entry3, checkbox1):
         if checkbox1:
             print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${entry2}")
         else:
-            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%")
+            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${round(sum(tax_list), 2)}")
         difference_calc = float(total) - float(round(sum(amounts_with_tax), 2))
         print(f"Difference(input-added=): ${round(difference_calc, 2):.2f}\n")        
     except KeyboardInterrupt:
