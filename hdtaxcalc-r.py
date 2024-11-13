@@ -81,6 +81,7 @@ class App:
         self.checkbox1 = tk.Checkbutton(self.root, text="Tax Total", variable=self.checkbox1_var, onvalue=1,offvalue=0)
         self.checkbox1.place(x=300,y=65)
         self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax")
+        self.checkbox1.select()
         # We add a button to test our setup
         self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
