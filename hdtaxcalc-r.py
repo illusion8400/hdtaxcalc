@@ -51,6 +51,9 @@ def main(entry1, entry2, entry3, checkbox1):
     except Exception as e:
         print(e)
 
+def about():
+    print(f"HDTAXCALC v{version.version}\nNov 2024 - illusion")
+
 class App:
     def __init__(self, root):
         # Minimal tkinter app
@@ -85,6 +88,9 @@ class App:
         # We add a button to test our setup
         self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
+        # About
+        self.about_button = tk.Button(self.root,text="?", command=about)
+        self.about_button.place(x=360, y=125)
         # Add windows where we are going to write the std output. 
         self.console_text = tk.Text(self.root, state='disabled', height=10)
         self.console_text.pack(expand=True, fill='both')
