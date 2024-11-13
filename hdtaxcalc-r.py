@@ -56,8 +56,8 @@ class App:
         # Minimal tkinter app
         self.root = root
         self.root.title(f"HD Tax Calculator - v{version.version}")
-        self.root.minsize(400, 600)
-        self.root.maxsize(400,600)
+        self.root.minsize(400, 700)
+        self.root.maxsize(400, 800)
         # Entry box; input
         self.title_label = tk.Label(self.root, text="Enter each amount with a space in between.")
         self.title_label.pack(side="top")
