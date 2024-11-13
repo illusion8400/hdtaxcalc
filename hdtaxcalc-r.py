@@ -9,7 +9,7 @@ class Version():
         self.version = "2.1.1"
 version = Version()
 
-def main(entry1, entry2, entry3, checkbox1):
+def main(self, entry1, entry2, entry3, checkbox1):
     try:
         count = 0
         # Entry 1-3
@@ -86,7 +86,7 @@ class App:
         self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax")
         self.checkbox1.select()
         # We add a button to test our setup
-        self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
         # About
         self.about_button = tk.Button(self.root,text="?", command=about)
@@ -95,8 +95,8 @@ class App:
         self.console_text = tk.Text(self.root, state='disabled', height=10)
         self.console_text.pack(expand=True, fill='both')
         # Bind return and keypad enter key to function
-        self.root.bind('<Return>', lambda x: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
-        self.root.bind('<KP_Enter>', lambda x: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.root.bind('<Return>', lambda x: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.root.bind('<KP_Enter>', lambda x: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         # We redirect sys.stdout -> TextRedirector
         self.redirect_sysstd()
 
