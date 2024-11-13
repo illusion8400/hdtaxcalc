@@ -1,5 +1,9 @@
 ## CHANGELOG.md HDTAXCALC
 
+**2.1.1**
+
+    - Prints total tax along with percentage when using tax total checkbox
+
 **2.1**
 
     - Added checkbox to calculate tax percentage based on a dollar amount

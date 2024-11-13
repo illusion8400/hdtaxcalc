@@ -6,7 +6,7 @@ import sys
 
 class Version():
     def __init__(self):
-        self.version = "2.1"
+        self.version = "2.1.1"
 version = Version()
 
 def main(entry1, entry2, entry3, checkbox1):
