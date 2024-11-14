@@ -4,6 +4,7 @@
 
     - Prints total tax along with percentage
     - Added about box
+    - Added clear box
     
 **2.1**
 
