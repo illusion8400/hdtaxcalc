@@ -6,7 +6,7 @@ import sys
 
 class Version():
     def __init__(self):
-        self.version = "2.1.1"
+        self.version = "2.1.2a"
 version = Version()
 
 def main(self, entry1, entry2, entry3, checkbox1):
@@ -38,12 +38,12 @@ def main(self, entry1, entry2, entry3, checkbox1):
             tax_list.append(amount_of_tax_for_item)
             print(f"{count}: ${float(x):.2f} + ${round(amount_of_tax_for_item, 2):.2f} = ${round(amt_with_tax, 2):.2f}")
         # END continue
-        print (f"\nTotal input: ${total}")
+        print (f"\nTotal input: ${float(total):.2f}")
         print(f"Total added: ${round(sum(amounts_with_tax), 2):.2f}")
         if checkbox1:
-            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${entry2}")
+            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${float(entry2):.2f}")
         else:
-            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${round(sum(tax_list), 2)}")
+            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${round(sum(tax_list), 2):.2f}")
         difference_calc = float(total) - float(round(sum(amounts_with_tax), 2))
         print(f"Difference(input-added=): ${round(difference_calc, 2):.2f}\n")        
     except KeyboardInterrupt:
