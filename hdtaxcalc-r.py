@@ -1,8 +1,6 @@
 
 """ HD TAX CALCULATOR"""
 import tkinter as tk
-from tkinter import ttk
-from ttkthemes import ThemedTk
 import tktooltip as tktool
 import sys
 
@@ -123,7 +121,6 @@ class TextRedirector(object):
         pass
 
 if __name__ == "__main__":
-    # root = tk.Tk()
-    root = ThemedTk(theme="arc")
+    root = tk.Tk()
     app = App(root)
     root.mainloop()
