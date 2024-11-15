@@ -1,5 +1,10 @@
 ## CHANGELOG.md HDTAXCALC
 
+**2.1.2**
+
+    - Separate amounts by the plus sign "+"
+    - Displays hundreths when whole numbers are used
+     
 **2.1.1**
 
     - Prints total tax along with percentage

@@ -6,7 +6,7 @@ import sys
 
 class Version():
     def __init__(self):
-        self.version = "2.1.2a"
+        self.version = "2.1.2"
 version = Version()
 
 def main(self, entry1, entry2, entry3, checkbox1):
@@ -15,7 +15,10 @@ def main(self, entry1, entry2, entry3, checkbox1):
         # Entry 1-3
         # entry1 amounts
         amounts = entry1
-        amounts = amounts.split()
+        if "+" in amounts:
+            amounts = amounts.split("+")
+        else:
+            amounts = amounts.split()
         # entry3 total
         if entry3:
             total = entry3
@@ -36,16 +39,16 @@ def main(self, entry1, entry2, entry3, checkbox1):
             amt_with_tax = float(x) + float(amount_of_tax_for_item)
             amounts_with_tax.append(float(amt_with_tax))
             tax_list.append(amount_of_tax_for_item)
-            print(f"{count}: ${float(x):.2f} + ${round(amount_of_tax_for_item, 2):.2f} = ${round(amt_with_tax, 2):.2f}")
+            print(f"{count}: ${float(x):.2f} + ${amount_of_tax_for_item:.2f} = ${amt_with_tax:.2f}")
         # END continue
         print (f"\nTotal input: ${float(total):.2f}")
-        print(f"Total added: ${round(sum(amounts_with_tax), 2):.2f}")
+        print(f"Total added: ${sum(amounts_with_tax):.2f}")
         if checkbox1:
-            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${float(entry2):.2f}")
+            print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${float(entry2)}")
         else:
-            print(f"Tax Percent: {round(tax_percent * 100, 2):.2f}%  Tax Total: ${round(sum(tax_list), 2):.2f}")
-        difference_calc = float(total) - float(round(sum(amounts_with_tax), 2))
-        print(f"Difference(input-added=): ${round(difference_calc, 2):.2f}\n")        
+            print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${sum(tax_list)}")
+        difference_calc = float(total) - float(sum(amounts_with_tax))
+        print(f"Difference(input-added=): ${difference_calc:.2f}\n")        
     except KeyboardInterrupt:
         print("\nGoodbye!")
     except Exception as e:
@@ -54,7 +57,7 @@ def main(self, entry1, entry2, entry3, checkbox1):
 def about():
     print(f"HDTAXCALC v{version.version}\nNov 2024 - illusion")
 
-def clear_all(self):
+def clear_boxes(self):
     self.entry1.delete(0, 'end')
     self.entry2.delete(0, 'end')
     self.entry3.delete(0, 'end')
@@ -67,7 +70,7 @@ class App:
         self.root.minsize(400, 700)
         self.root.maxsize(400, 800)
         # Entry box; input
-        self.title_label = tk.Label(self.root, text="Enter each amount with a space in between.")
+        self.title_label = tk.Label(self.root, text="Enter each amount with a plus or space in between.")
         self.title_label.pack(side="top")
         # Amounts
         self.entry1_label = tk.Label(self.root, text="Amounts: ")
@@ -88,13 +91,13 @@ class App:
         self.checkbox1_var = tk.IntVar()
         self.checkbox1 = tk.Checkbutton(self.root, text="Tax Total", variable=self.checkbox1_var, onvalue=1,offvalue=0)
         self.checkbox1.place(x=300,y=65)
-        self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax")
+        self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax in dollar amount")
         self.checkbox1.select()
         # We add a button to test our setup
         self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
-        # Clear All
-        self.clear_button = tk.Button(self.root, text="Clear", command=lambda: clear_all(self))
+        # Clear
+        self.clear_button = tk.Button(self.root, text="Clear", command=lambda: clear_boxes(self))
         self.clear_button.place(x=300,y=125)
         # About
         self.about_button = tk.Button(self.root,text="?", command=about)
