@@ -1,5 +1,9 @@
 ## CHANGELOG.md HDTAXCALC
 
+**2.2**
+    - Added clear input and clear all buttons
+    - Cleaned code comments
+    
 **2.1.2**
 
     - Separate amounts by the plus sign "+"

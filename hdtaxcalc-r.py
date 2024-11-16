@@ -6,7 +6,7 @@ import sys
 
 class Version():
     def __init__(self):
-        self.version = "2.1.2"
+        self.version = "2.2"
 version = Version()
 
 def main(self, entry1, entry2, entry3, checkbox1):
@@ -61,7 +61,13 @@ def clear_boxes(self):
     self.entry1.delete(0, 'end')
     self.entry2.delete(0, 'end')
     self.entry3.delete(0, 'end')
-    
+
+def clear_all(self):
+    clear_boxes(self)
+    self.console_text.configure(state='normal')
+    self.console_text.delete("1.0", tk.END)
+    self.console_text.configure(state='disable')
+
 class App:
     def __init__(self, root):
         # Minimal tkinter app
@@ -87,32 +93,35 @@ class App:
         self.entry3_label.place(x=20, y=100)
         self.entry3 = tk.Entry(self.root)
         self.entry3.pack(pady=5, side="top")
-        # Add check box for total tax
+        # Total Tax Checkbox
         self.checkbox1_var = tk.IntVar()
         self.checkbox1 = tk.Checkbutton(self.root, text="Tax Total", variable=self.checkbox1_var, onvalue=1,offvalue=0)
         self.checkbox1.place(x=300,y=65)
         self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax in dollar amount")
         self.checkbox1.select()
-        # We add a button to test our setup
+        # Go Button
         self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
-        # Clear
-        self.clear_button = tk.Button(self.root, text="Clear", command=lambda: clear_boxes(self))
-        self.clear_button.place(x=300,y=125)
+        # Clear Input
+        self.clear_button = tk.Button(self.root, text="Clear Input", command=lambda: clear_boxes(self))
+        self.clear_button.place(x=300,y=90)
+        # Clear All
+        self.clear_all_button = tk.Button(self.root, text="Clear All", command=lambda: clear_all(self))
+        self.clear_all_button.place(x=280,y=125)
         # About
         self.about_button = tk.Button(self.root,text="?", command=about)
         self.about_button.place(x=360, y=125)
-        # Add windows where we are going to write the std output. 
+        # STD OUTPUT - CONSOLE_TEXT
         self.console_text = tk.Text(self.root, state='disabled', height=10)
         self.console_text.pack(expand=True, fill='both')
         # Bind return and keypad enter key to function
         self.root.bind('<Return>', lambda x: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.root.bind('<KP_Enter>', lambda x: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
-        # We redirect sys.stdout -> TextRedirector
+        # Redirect out
         self.redirect_sysstd()
 
     def redirect_sysstd(self):
-        # We specify that sys.stdout point to TextRedirector
+        # Pit stop
         sys.stdout = TextRedirector(self.console_text, "stdout")
         sys.stderr = TextRedirector(self.console_text, "stderr")
     

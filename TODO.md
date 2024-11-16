@@ -2,8 +2,8 @@
 
 ### TODO
 
-- [ ] Clear printed field
 
+- [x] Clear printed field
 - [x] Convert invoice and tax to hundreths when printed
 - [x] Clear text or fields button
 - [x] Display total tax when only using percent
