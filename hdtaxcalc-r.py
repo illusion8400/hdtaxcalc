@@ -107,13 +107,13 @@ class App:
         self.go_button.pack(side="top")
         # Clear Input
         self.clear_button = ttk.Button(self.root, text="Clear Input", command=lambda: clear_boxes(self))
-        self.clear_button.place(x=300,y=90)
+        self.clear_button.place(x=300,y=95)
         # Clear All
         self.clear_all_button = ttk.Button(self.root, text="Clear All", command=lambda: clear_all(self))
-        self.clear_all_button.place(x=280,y=125)
+        self.clear_all_button.place(x=280,y=129)
         # About
         self.about_button = ttk.Button(self.root,text="?", command=about)
-        self.about_button.place(x=360, y=125)
+        self.about_button.place(x=360, y=129)
         # STD OUTPUT - CONSOLE_TEXT
         self.console_text = tk.Text(self.root, state='disabled', height=10)
         self.console_text.pack(expand=True, fill='both')

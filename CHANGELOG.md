@@ -1,6 +1,13 @@
 ## CHANGELOG.md HDTAXCALC
 
+**2.2.1**
+
+    - Themed buttons
+    - Added exception handling for valueinputs
+    - Added github site to about
+    
 **2.2**
+
     - Added clear input and clear all buttons
     - Cleaned code comments
     
