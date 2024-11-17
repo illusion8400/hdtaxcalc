@@ -146,6 +146,5 @@ class TextRedirector(object):
 if __name__ == "__main__":
     # root = tk.Tk()
     root = ThemedTk(theme='blue')
-    print(root.get_themes())
     app = App(root)
     root.mainloop()
