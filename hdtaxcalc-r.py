@@ -1,8 +1,10 @@
 
 """ HD TAX CALCULATOR"""
 import tkinter as tk
+from tkinter import ttk
 import tktooltip as tktool
 import sys
+from ttkthemes import ThemedTk
 
 class Version():
     def __init__(self):
@@ -82,17 +84,17 @@ class App:
         # Amounts
         self.entry1_label = tk.Label(self.root, text="Amounts: ")
         self.entry1_label.place(x=20, y=30)
-        self.entry1 = tk.Entry(self.root)
+        self.entry1 = ttk.Entry(self.root)
         self.entry1.pack(pady=5, side="top")
         # Taxes
         self.entry2_label = tk.Label(self.root, text="Tax Percent: ")
         self.entry2_label.place(x=20, y=65)
-        self.entry2 = tk.Entry(self.root)
+        self.entry2 = ttk.Entry(self.root)
         self.entry2.pack(pady=5, side="top")
         # Total
         self.entry3_label = tk.Label(self.root, text="Total Invoice: ")
         self.entry3_label.place(x=20, y=100)
-        self.entry3 = tk.Entry(self.root)
+        self.entry3 = ttk.Entry(self.root)
         self.entry3.pack(pady=5, side="top")
         # Total Tax Checkbox
         self.checkbox1_var = tk.IntVar()
@@ -101,16 +103,16 @@ class App:
         self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax in dollar amount")
         self.checkbox1.select()
         # Go Button
-        self.go_button = tk.Button(self.root, text="Go", command=lambda: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.go_button = ttk.Button(self.root, text="Go", command=lambda: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
         # Clear Input
-        self.clear_button = tk.Button(self.root, text="Clear Input", command=lambda: clear_boxes(self))
+        self.clear_button = ttk.Button(self.root, text="Clear Input", command=lambda: clear_boxes(self))
         self.clear_button.place(x=300,y=90)
         # Clear All
-        self.clear_all_button = tk.Button(self.root, text="Clear All", command=lambda: clear_all(self))
+        self.clear_all_button = ttk.Button(self.root, text="Clear All", command=lambda: clear_all(self))
         self.clear_all_button.place(x=280,y=125)
         # About
-        self.about_button = tk.Button(self.root,text="?", command=about)
+        self.about_button = ttk.Button(self.root,text="?", command=about)
         self.about_button.place(x=360, y=125)
         # STD OUTPUT - CONSOLE_TEXT
         self.console_text = tk.Text(self.root, state='disabled', height=10)
@@ -142,6 +144,8 @@ class TextRedirector(object):
         pass
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    # root = tk.Tk()
+    root = ThemedTk(theme='blue')
+    print(root.get_themes())
     app = App(root)
     root.mainloop()
