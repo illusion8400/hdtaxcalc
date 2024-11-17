@@ -2,8 +2,8 @@
 
 ### TODO
 
-- [ ] Theme
 
+- [x] Theme
 - [x] Clear printed field
 - [x] Convert invoice and tax to hundreths when printed
 - [x] Clear text or fields button
