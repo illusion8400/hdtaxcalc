@@ -6,7 +6,7 @@ import sys
 
 class Version():
     def __init__(self):
-        self.version = "2.2"
+        self.version = "2.2.1"
 version = Version()
 
 def main(self, entry1, entry2, entry3, checkbox1):
@@ -48,14 +48,15 @@ def main(self, entry1, entry2, entry3, checkbox1):
         else:
             print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${sum(tax_list)}")
         difference_calc = float(total) - float(sum(amounts_with_tax))
-        print(f"Difference(input-added=): ${difference_calc:.2f}\n")        
-    except KeyboardInterrupt:
-        print("\nGoodbye!")
+        print(f"Difference(input-added=): ${difference_calc:.2f}\n")
+    except ValueError:
+        print("Bad Input")
     except Exception as e:
         print(e)
 
 def about():
     print(f"HDTAXCALC v{version.version}\nNov 2024 - illusion")
+    print(f"\nhttps://github.com/illusion8400/hdtaxcalc")
 
 def clear_boxes(self):
     self.entry1.delete(0, 'end')
