@@ -81,24 +81,29 @@ class App:
         # Entry box; input
         self.title_label = tk.Label(self.root, text="Enter each amount with a plus or space in between.")
         self.title_label.pack(side="top")
+        self.title_label.configure(bg='lightblue')
         # Amounts
         self.entry1_label = tk.Label(self.root, text="Amounts: ")
         self.entry1_label.place(x=20, y=30)
+        self.entry1_label.configure(bg='lightblue')
         self.entry1 = ttk.Entry(self.root)
         self.entry1.pack(pady=5, side="top")
         # Taxes
         self.entry2_label = tk.Label(self.root, text="Tax Percent: ")
         self.entry2_label.place(x=20, y=65)
+        self.entry2_label.configure(bg='lightblue')
         self.entry2 = ttk.Entry(self.root)
         self.entry2.pack(pady=5, side="top")
         # Total
         self.entry3_label = tk.Label(self.root, text="Total Invoice: ")
         self.entry3_label.place(x=20, y=100)
+        self.entry3_label.configure(bg='lightblue')
         self.entry3 = ttk.Entry(self.root)
         self.entry3.pack(pady=5, side="top")
         # Total Tax Checkbox
         self.checkbox1_var = tk.IntVar()
         self.checkbox1 = tk.Checkbutton(self.root, text="Tax Total", variable=self.checkbox1_var, onvalue=1,offvalue=0)
+        self.checkbox1.configure(bg='lightblue')
         self.checkbox1.place(x=300,y=65)
         self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax in dollar amount")
         self.checkbox1.select()
@@ -146,5 +151,6 @@ class TextRedirector(object):
 if __name__ == "__main__":
     # root = tk.Tk()
     root = ThemedTk(theme='blue')
+    root.configure(bg='lightblue')
     app = App(root)
     root.mainloop()
