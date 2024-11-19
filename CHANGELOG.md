@@ -1,5 +1,9 @@
 ## CHANGELOG.md HDTAXCALC
 
+**2.2.2**
+
+    - Code cleanup
+    
 **2.2.1**
 
     - Themed buttons

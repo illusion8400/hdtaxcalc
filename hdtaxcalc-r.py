@@ -8,33 +8,27 @@ from ttkthemes import ThemedTk
 
 class Version():
     def __init__(self):
-        self.version = "2.2.1"
+        self.version = "2.2.2a"
 version = Version()
 
-def main(self, entry1, entry2, entry3, checkbox1):
+def main(entry1, entry2, entry3, checkbox1):
     try:
         count = 0
         # Entry 1-3
         # entry1 amounts
         amounts = entry1
-        if "+" in amounts:
-            amounts = amounts.split("+")
-        else:
-            amounts = amounts.split()
-        # entry3 total
-        if entry3:
-            total = entry3
-        else:
-            total = 0
+        amounts = amounts.split("+") if "+" in amounts else amounts.split()
         # entry2 taxes
-        if checkbox1:
-            tax_percent = (float(entry2) / (float(entry3) - float(entry2))) * 100
-        else:
-            tax_percent = entry2
+        tax_percent = (float(entry2) / (float(entry3) - float(entry2))) * 100 if checkbox1 else entry2
         tax_percent = float(tax_percent) / 100
+        # entry3 total
+        total = entry3 if entry3 else 0
+        # lists
         amounts_with_tax = []
         tax_list = []
+        ###
         print("***")
+        # start calc
         for x in amounts:
             count += 1
             amount_of_tax_for_item = float(x) * float(tax_percent)
@@ -42,14 +36,14 @@ def main(self, entry1, entry2, entry3, checkbox1):
             amounts_with_tax.append(float(amt_with_tax))
             tax_list.append(amount_of_tax_for_item)
             print(f"{count}: ${float(x):.2f} + ${amount_of_tax_for_item:.2f} = ${amt_with_tax:.2f}")
-        # END continue
+        difference_calc = float(total) - float(sum(amounts_with_tax))
+        # end calc
         print (f"\nTotal input: ${float(total):.2f}")
         print(f"Total added: ${sum(amounts_with_tax):.2f}")
         if checkbox1:
             print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${float(entry2)}")
         else:
             print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${sum(tax_list)}")
-        difference_calc = float(total) - float(sum(amounts_with_tax))
         print(f"Difference(input-added=): ${difference_calc:.2f}\n")
     except ValueError:
         print("Bad Input")
@@ -109,7 +103,7 @@ class App:
         self.checkbox1_tip = tktool.ToolTip(self.checkbox1, "Calculate tax percentage by inputting total tax in dollar amount")
         self.checkbox1.select()
         # Go Button
-        self.go_button = ttk.Button(self.root, text="Go", command=lambda: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.go_button = ttk.Button(self.root, text="Go", command=lambda: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         self.go_button.pack(side="top")
         # Clear Input
         self.clear_button = ttk.Button(self.root, text="Clear Input", command=lambda: clear_boxes(self))
@@ -124,8 +118,8 @@ class App:
         self.console_text = tk.Text(self.root, state='disabled', height=10)
         self.console_text.pack(expand=True, fill='both')
         # Bind return and keypad enter key to function
-        self.root.bind('<Return>', lambda x: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
-        self.root.bind('<KP_Enter>', lambda x: main(self,self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.root.bind('<Return>', lambda x: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
+        self.root.bind('<KP_Enter>', lambda x: main(self.entry1.get(), self.entry2.get(), self.entry3.get(), self.checkbox1_var.get()))
         # Redirect out
         self.redirect_sysstd()
 
