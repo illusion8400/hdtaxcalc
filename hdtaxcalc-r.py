@@ -57,8 +57,9 @@ def main(self, entry1, entry2, entry3, checkbox1):
         print(e)
 
 def about():
+    print("***")
     print(f"HDTAXCALC v{version.version}\nNov 2024 - illusion")
-    print(f"\nhttps://github.com/illusion8400/hdtaxcalc")
+    print(f"https://github.com/illusion8400/hdtaxcalc\n")
 
 def clear_boxes(self):
     self.entry1.delete(0, 'end')
