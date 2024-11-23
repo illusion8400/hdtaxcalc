@@ -2,7 +2,7 @@
 
 **2.2.2**
     
-    - Release checker
+    - Added github release version check to about
     - Code cleanup
     
 **2.2.1**
