@@ -1,2 +1,3 @@
 tkinter-tooltip
 ttkthemes
+requests
