@@ -1,5 +1,6 @@
 
 """ HD TAX CALCULATOR"""
+import requests
 import tkinter as tk
 from tkinter import ttk
 import tktooltip as tktool
@@ -8,7 +9,7 @@ from ttkthemes import ThemedTk
 
 class Version():
     def __init__(self):
-        self.version = "2.2.2a"
+        self.version = "2.2.2"
 version = Version()
 
 def main(entry1, entry2, entry3, checkbox1):
@@ -54,6 +55,13 @@ def about():
     print("***")
     print(f"HDTAXCALC v{version.version}\nNov 2024 - illusion")
     print(f"https://github.com/illusion8400/hdtaxcalc\n")
+    try:
+        url = "https://api.github.com/repos/illusion8400/hdtaxcalc/releases/latest"
+        latest_release = requests.get(url)
+        latest_release_git = latest_release.json()["name"]
+        print(f"Current version from github: {latest_release_git}\n")
+    except Exception as e:
+        print(e)
 
 def clear_boxes(self):
     self.entry1.delete(0, 'end')

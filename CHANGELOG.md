@@ -1,7 +1,8 @@
 ## CHANGELOG.md HDTAXCALC
 
 **2.2.2**
-
+    
+    - Release checker
     - Code cleanup
     
 **2.2.1**
