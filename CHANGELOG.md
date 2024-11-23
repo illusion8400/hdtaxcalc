@@ -1,6 +1,6 @@
 ## CHANGELOG.md HDTAXCALC
 
-**2.2.2**
+**2.3**
     
     - Added github release version check to about
     - Code cleanup

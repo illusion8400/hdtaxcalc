@@ -9,7 +9,7 @@ from ttkthemes import ThemedTk
 
 class Version():
     def __init__(self):
-        self.version = "2.2.2"
+        self.version = "2.3"
 version = Version()
 
 def main(entry1, entry2, entry3, checkbox1):
@@ -56,10 +56,18 @@ def about():
     print(f"HDTAXCALC v{version.version}\nNov 2024 - illusion")
     print(f"https://github.com/illusion8400/hdtaxcalc\n")
     try:
+        print("Checking for updates...")
         url = "https://api.github.com/repos/illusion8400/hdtaxcalc/releases/latest"
         latest_release = requests.get(url)
         latest_release_git = latest_release.json()["name"]
-        print(f"Current version from github: {latest_release_git}\n")
+        if latest_release_git == f"v{version.version}":
+            print(f"Current version up to date\n")
+        else:
+            print(f"***New version available!***")
+            print(f"Current version from github: {latest_release_git}\n")
+            print(f"{latest_release.json()["assets"][1]["browser_download_url"]}")
+            print(f"{latest_release.json()["assets"][0]["browser_download_url"]}\n")
+
     except Exception as e:
         print(e)
 
