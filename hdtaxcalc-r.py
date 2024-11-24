@@ -44,7 +44,7 @@ def main(entry1, entry2, entry3, checkbox1):
         if checkbox1:
             print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${float(entry2)}")
         else:
-            print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${sum(tax_list)}")
+            print(f"Tax Percent: {tax_percent * 100:.2f}%  Tax Total: ${sum(tax_list):.4f}")
         print(f"Difference(input-added=): ${difference_calc:.2f}\n")
     except ValueError:
         print("Bad Input")
