@@ -2,6 +2,7 @@
 
 ### TODO
 
+- [ ] Allow calc of tax by item amounts w/ total tax if inv total is 0
 
 - [x] Theme
 - [x] Clear printed field
