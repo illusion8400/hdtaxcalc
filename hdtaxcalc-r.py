@@ -9,7 +9,7 @@ from ttkthemes import ThemedTk
 
 class Version():
     def __init__(self):
-        self.version = "2.3"
+        self.version = "2.3.1"
 version = Version()
 
 def main(entry1, entry2, entry3, checkbox1):
